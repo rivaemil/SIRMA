@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Ticket;
+use App\Models\Material;
 
-class TicketController extends Controller
+
+class MaterialController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $tickets = Ticket::all();
-        return $tickets;
+        $materiales = Material::all();
+        return $materiales;
     }
 
     /**
@@ -29,14 +30,13 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        $ticket = new Ticket();
-        $ticket->cliente = $request->cliente;
-        $ticket->vehiculo = $request->vehiculo;
-        $ticket->concepto = $request->concepto;
-        $ticket->descripcion = $request->descripcion;
-        $ticket->total = $request->total;
+        $material = new Material();
+        $material->nombre = $request->nombre;
+        $material->cantidad = $request->cantidad;
+        $material->proveedor = $request->proveedor;
+        $material->descripcion = $request->descripcion;
         
-        $ticket->save();
+        $material->save();
     }
 
     /**
@@ -60,15 +60,15 @@ class TicketController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $ticket = Ticket::findOrFail($request->id);
-        $ticket->cliente = $request->cliente;
-        $ticket->vehiculo = $request->vehiculo;
-        $ticket->concepto = $request->concepto;
-        $ticket->descripcion = $request->descripcion;
-        $ticket->total = $request->total;
+        $material = Material::findOrFail($request->id);
+        $material->nombre = $request->nombre;
+        $material->cantidad = $request->cantidad;
+        $material->proveedor = $request->proveedor;
+        $material->descripcion = $request->descripcion;
+        
 
-        $ticket->save();
-        return $ticket;
+        $material->save();
+        return $material;
     }
 
     /**
@@ -76,7 +76,7 @@ class TicketController extends Controller
      */
     public function destroy(Request $request)
     {
-        $ticket = Ticket::destroy($request->id);
-        return $ticket;
+        $material = Material::destroy($request->id);
+        return $material;
     }
 }
