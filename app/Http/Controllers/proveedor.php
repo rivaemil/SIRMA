@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\proveedore;
 use Illuminate\Http\Request;
 
 class proveedor extends Controller
@@ -11,7 +12,7 @@ class proveedor extends Controller
      */
     public function index()
     {
-        $proveedor = Proveedor::all();
+        $proveedor = proveedore::all();
         return view("proveedor", compact("provedor"));
     }
 
@@ -28,7 +29,7 @@ class proveedor extends Controller
      */
     public function store(Request $request)
     {
-        $proveedor = new proveedor;
+        $proveedor = new proveedore;
         
         $proveedor->nombre = $request->nombre;
         $proveedor->telefono = $request->telefono;
@@ -52,7 +53,15 @@ class proveedor extends Controller
      */
     public function edit(Request $request)
     {
-        //
+        $proveedor = proveedore::findOrFail($request->id);
+
+        $proveedor->nombre = $request->nombre;
+        $proveedor->telefono = $request->telefono;
+        $proveedor->correo = $request->correo;
+        $proveedor->direccion = $request->direccion;
+        $proveedor->nombre_encargado = $request->nombre_encargado;
+
+        $proveedor->save();
     }
 
     /**
@@ -66,8 +75,9 @@ class proveedor extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $proveedor = proveedore::findOrFail($request->id);
+        $proveedor->delete();
     }
 }
