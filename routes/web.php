@@ -15,3 +15,8 @@ Route::get('api/materiales', 'App\Http\Controllers\MaterialController@index');
 Route::post('api/materiales', 'App\Http\Controllers\MaterialController@store');
 Route::put('api/materiales/{id}', 'App\Http\Controllers\MaterialController@update');
 Route::delete('api/materiales/{id}', 'App\Http\Controllers\MaterialController@destroy');
+
+Route::get('api/facturas', 'App\Http\Controllers\FacturaController@index');
+Route::post('api/facturas', 'App\Http\Controllers\FacturaController@store');
+Route::put('api/facturas/{id}', 'App\Http\Controllers\FacturaController@update');
+Route::delete('api/facturas/{id}', 'App\Http\Controllers\FacturaController@destroy');
