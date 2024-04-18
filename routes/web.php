@@ -48,13 +48,3 @@ Route::controller(ProveedorController::class,)->group(function (){
 
 });
 
-Route::controller(TicketController::class,)->group(function (){
-    Route::get('/ticket/index', 'index')->name('prov_index');
-    Route::get('/proveedor/create', 'create')->name('prov_create');
-    Route::get('/proveedor/edit/{id}', 'edit')->name('prov_edit');
-    Route::get('/proveedor/destroy/{id}', 'destroy')->name('prov_destroy');
-    
-    Route::post('/proveedor/store', 'store')->name('prov_store');
-    Route::post('/proveedor/update', 'update')->name('prov_update');
-
-});

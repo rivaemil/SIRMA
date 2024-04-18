@@ -8,46 +8,46 @@
 </head>
 <style>
     .form-container {
-    max-width: 400px;
-    margin: 0 auto;
-}
+        max-width: 400px;
+        margin: 0 auto;
+    }
 
-.form {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 5px;
-}
+    .form {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+    }
 
-.form-group {
-    margin-bottom: 20px;
-}
+    .form-group {
+        margin-bottom: 20px;
+    }
 
-.form-label {
-    display: block;
-    margin-bottom: 5px;
-}
+    .form-label {
+        display: block;
+        margin-bottom: 5px;
+    }
 
-.form-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+    .form-input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
 
-.btn {
-    display: inline-block;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    cursor: pointer;
-}
+    .btn {
+        display: inline-block;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        cursor: pointer;
+    }
 
-.btn:hover {
-    background-color: #0056b3;
-}
+    .btn:hover {
+        background-color: #0056b3;
+    }
 
 </style>
 <body>
