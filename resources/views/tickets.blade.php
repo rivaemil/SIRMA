@@ -17,7 +17,7 @@
         <body>
             <x-slot name="header">
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    {{ __('Proveedor') }}
+                    {{ __('Tickets') }}
                 </h2>
             </x-slot>
             <div id="app" class="mx-auto">
@@ -34,30 +34,32 @@
                                     <thead>
                                     <tr class="bg-dark">
                                     <th class="white--text">ID</th>
-                                    <th class="white--text">Nombre</th>
-                                    <th class="white--text">Telefono</th>
-                                    <th class="white--text">Correo</th>
-                                    <th class="white--text text-center">Direccion</th>
-                                    <th class="white--text text-center">Encargado</th>
+                                    <th class="white--text">CLIENTE</th>
+                                    <th class="white--text">VEHICULO</th>
+                                    <th class="white--text">CONCEPTO</th>
+                                    <th class="white--text text-center">DESCRIPCION</th>
+                                    <th class="white--text text-center">TOTAL</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="proveedor in proveedores" :key="proveedor.id">
-                                        <td>{{ 'proveedor'.'id' }}</td>
-                                        <td>{{ 'proveedor'.'nombre' }}</td>
-                                        <td>{{ 'proveedor'.'telefono' }}</td>
-                                        <td>{{ 'proveedor'.'correo' }}</td>
-                                        <td>{{ 'proveedor'.'direccion' }}</td>
-                                        <td>{{ 'proveedor'.'nombre_encargado' }}</td>
+                                        
+                                        <tr v-for="ticket in tickets" :key="ticket.id">
+                                        <td>{{ '$item'.'id' }}</td>
+                                        <td>{{ 'ticket'.'cliente' }}</td>
+                                        <td>{{ 'ticket'.'vehiculo' }}</td>
+                                        <td>{{ 'ticket'.'concepto' }}</td>
+                                        <td>{{ 'ticket'.'descripcion' }}</td>
+                                        <td>{{ 'ticket'.'total' }}</td>
                                             <td>
                                             <v-btn class="pink" dark small fab
-                                            @click="formEditar(proveedor.id, proveedor.nombre, proveedor.telefono,
-                                            proveedor.correo, proveedor.direccion, proveedor.nombre_encargado)"><v-icon>mdi-pencil</v-icon></v-btn>
+                                            @click="formEditar(ticket.id, ticket.cliente, ticket.vehiculo,
+                                            ticket.concepto, ticket.descripcion, ticket.total)"><v-icon>mdi-pencil</v-icon></v-btn>
 
-                                            <v-btn class="error" fab dark small @click="borrar(proveedor.id)"><v-icon>mdi-delete</v-icon></v-btn>
+                                            <v-btn class="error" fab dark small @click="borrar(ticket.id)"><v-icon>mdi-delete</v-icon></v-btn>
 
                                             </td>
                                         </tr>
+                                        
                                     </tbody>
                                 </template>
                             </v-simple-table>
@@ -65,26 +67,26 @@
                     <!-- Componente de Diálogo para CREAR y EDITAR -->
                         <v-dialog v-model="dialog" max-width="500">
                             <v-card>
-                            <v-card-title class="purple darken-4 white--text">proveedor</v-card-title>
+                            <v-card-title class="purple darken-4 white--text">Ticket</v-card-title>
                                 <v-card-text>
                                 <v-form>
                                     <v-container>
                                         <v-row>
-                                            <input v-model="proveedor.id" hidden></input>
+                                            <input v-model="ticket.id" hidden></input>
                                             <v-col cols="12" md="4">
-                                                <v-text-field v-model="proveedor.nombre" label="Nombre" solo required>{{'proveedor'.'nombre'}}</v-text-field>
+                                                <v-text-field v-model="ticket.cliente" label="Cliente" solo required>{{'ticket'.'cliente'}}</v-text-field>
                                             </v-col>
                                             <v-col cols="12" md="4">
-                                                <v-text-field v-model="proveedor.telefono" label="Telefono" solo required>{{'proveedor'.'telefono'}}</v-text-field>
+                                                <v-text-field v-model="ticket.vehiculo" label="Vehiculo" solo required>{{'ticket'.'vehiculo'}}</v-text-field>
                                             </v-col>
                                             <v-col cols="12" md="4">
-                                                <v-text-field v-model="proveedor.correo" label="Correo" solo required>{{'proveedor'.'correo'}}</v-text-field>
+                                                <v-text-field v-model="ticket.concepto" label="Concepto" solo required>{{'ticket'.'concepto'}}</v-text-field>
                                             </v-col>
                                             <v-col cols="12" md="4">
-                                                <v-text-field v-model="proveedor.direccion" label="Direccion" solo required>{{'proveedor'.'direccion'}}</v-text-field>
+                                                <v-text-field v-model="ticket.descripcion" label="Descripcion" solo required>{{'ticket'.'descripcion'}}</v-text-field>
                                             </v-col>
                                             <v-col cols="12" md="4">
-                                                <v-text-field v-model="proveedor.nombre_encargado" label="NombreEncargado" solo required>{{'proveedor'.'nombre_encargado'}}</v-text-field>
+                                                <v-text-field v-model="ticket.total" label="Total" type="number" prefix="$" solo required></v-text-field>
                                             </v-col>
                                         </v-row>
                                     </v-container>
@@ -105,7 +107,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.js"integrity="sha512-nqIFZC8560+CqHgXKez61MI0f9XSTKLkm0zFVm/99Wt0jSTZ7yeeYwbzyl0SGn/s8Mulbdw+ScCG41hmO2+FKw=="crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.0.2/dist/sweetalert2.all.min.js"></script>
             <script>
-                let url = 'http://localhost:8000/api/proveedors/';
+                let url = 'http://localhost:8000/api/tickets/';
                 new Vue({
                     el: '#app',
                     vuetify: new Vuetify(),

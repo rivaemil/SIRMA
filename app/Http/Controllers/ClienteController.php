@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Ticket;
+use App\Models\Clientes;
 
-class TicketController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $ticket = Ticket::all();
-        return view('tickets', compact('ticket'));
+        $clientes = Clientes::all();
+        return $clientes;
+        //
     }
 
     /**
@@ -29,16 +30,12 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        $ticket = new Ticket();
-        $ticket->cliente = $request->cliente;
-        $ticket->vehiculo = $request->vehiculo;
-        $ticket->concepto = $request->concepto;
-        $ticket->descripcion = $request->descripcion;
-        $ticket->total = $request->total;
-        
-        $ticket->save();
-
-        return redirect()->route('prov_index');
+        $clientes = new Clientes();
+        $clientes->Nombre = $request->Nombre;
+        $clientes->Correo = $request->Correo;
+        $clientes->Telefono = $request->Telefono;
+        $clientes->save();
+        //
     }
 
     /**
@@ -62,15 +59,15 @@ class TicketController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $ticket = Ticket::findOrFail($request->id);
-        $ticket->cliente = $request->cliente;
-        $ticket->vehiculo = $request->vehiculo;
-        $ticket->concepto = $request->concepto;
-        $ticket->descripcion = $request->descripcion;
-        $ticket->total = $request->total;
 
-        $ticket->save();
-        return $ticket;
+        $clientes = Clientes::findOrFail($request->id);
+        
+        $clientes->Nombre = $request->Nombre;
+        $clientes->Correo = $request->Correo;
+        $clientes->Telefono = $request->Telefono;
+        $clientes->save();
+        return $clientes;
+        //
     }
 
     /**
@@ -78,7 +75,9 @@ class TicketController extends Controller
      */
     public function destroy(Request $request)
     {
-        $ticket = Ticket::destroy($request->id);
-        return $ticket;
+        $clientes = Clientes::destroy($request->id);
+        return $clientes;
+
+        //
     }
 }
